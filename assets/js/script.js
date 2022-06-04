@@ -133,5 +133,31 @@ $("#remove-tasks").on("click", function () {
   saveTasks();
 });
 
+$(".card .list-group").sortable({
+  connectWith: $(".card .list-group"),
+  scroll: false,
+  tolerance: "pointer",
+  helper: "clone",
+  activate: function (e) {
+    console.log("activate", this);
+  },
+  deactivate: function (e) {
+    console.log("deactivate", this);
+  },
+  over: function (e) {
+    console.log("over", e.target);
+  },
+  out: function (e) {
+    console.log("out", e.target);
+  },
+  update: function (e) {
+    $(this)
+      .children()
+      .each(function () {
+        console.log($(this));
+      });
+  },
+});
+
 // load tasks for the first time
 loadTasks();
